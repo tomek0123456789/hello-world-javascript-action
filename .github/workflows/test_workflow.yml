@@ -53,7 +53,7 @@ jobs:
       - run: universal-sierra-compiler -V | grep "universal-sierra-compiler 1.0.0"
 
       - name: "Create .tool-versions file in subfolder"
-        run: mkdir ./tmp && echo "universal-sierra-compiler 2.0.0-rc.0" >> ./tmp/.tool-versions
+        run: mkdir ./tmp && echo "universal-sierra-compiler 2.0.0-rc.0\nstarknet-foundry 1.2.3" >> ./tmp/.tool-versions
       - name: "Setup using `.tool-versions` file in subfolder"
         uses: ./
         with:
