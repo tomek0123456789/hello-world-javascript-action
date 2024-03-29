@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build lib/main.js -o dist/setup --source-map --license licenses.txt  ",
+    "build": "ncc build index.js -o dist/setup --source-map --license licenses.txt",
     "lint": "npm run fmt:check",
     "fmt:check": "prettier -c .",
     "fmt": "prettier -w .",
