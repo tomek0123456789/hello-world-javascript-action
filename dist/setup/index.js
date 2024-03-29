@@ -30759,7 +30759,6 @@ async function main() {
           triplet,
         );
         if (!uscPrefix) {
-          await downloadUniversalSierraCompiler();
           const download = await downloadUSC(uscVersion);
           uscPrefix = await tool_cache.cacheDir(
             download,
