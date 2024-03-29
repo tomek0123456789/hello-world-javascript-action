@@ -30711,13 +30711,13 @@ async function findUSCDir(extractedPath) {
   for (const dirent of await promises_default().readdir(extractedPath, {
     withFileTypes: true,
   })) {
-    if (dirent.isDirectory() && dirent.name.startsWith("starknet-foundry-")) {
+    if (dirent.isDirectory() && dirent.name.startsWith("universal-sierra-compiler-")) {
       return external_path_default().join(extractedPath, dirent.name);
     }
   }
 
   throw new Error(
-    `could not find Starknet Foundry directory in ${extractedPath}`,
+    `could not find universal-sierra-compiler directory in ${extractedPath}`,
   );
 }
 
