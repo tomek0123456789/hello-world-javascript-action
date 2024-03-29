@@ -1,0 +1,21 @@
+name: Setup universal-sierra-compiler
+description: Sets up universal-sierra-compiler in your GitHub Actions workflow
+author: Software Mansion
+branding:
+  color: blue
+  icon: activity
+inputs:
+  universal-sierra-compiler-version:
+    description: universal-sierra-compiler version to use
+    required: false
+  tool-versions:
+    description: Path to .tool-versions file
+    required: false
+outputs:
+  universal-sierra-compiler-prefix:
+    description: The prefix of installed universal-sierra-compiler
+  universal-sierra-compiler-version:
+    description: The version of installed universal-sierra-compiler
+runs:
+  using: node20
+  main: "dist/setup/index.js"

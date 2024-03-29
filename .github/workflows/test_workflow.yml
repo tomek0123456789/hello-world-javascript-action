@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  merge_group:
+
+jobs:
+  test:
+    name: test ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: "Fetch latest universal-sierra-compiler version from GitHub releases"
+        id: version
+        shell: pwsh
+        run: |
+          $location = (Invoke-WebRequest -Uri "https://github.com/software-mansion/universal-sierra-compiler/releases/latest" -Method Head -MaximumRedirection 0 -SkipHttpErrorCheck -ErrorAction Ignore).Headers.Location
+          $latest_version = ($location -replace '^.*/v','')
+          echo "Latest universal-sierra-compiler version found is $latest_version"
+          echo "LATEST_VERSION=$latest_version" >> $env:GITHUB_OUTPUT
+
+      - name: "Setup with no version specified"
+        uses: ./
+      - run: universal-sierra-compiler -V | grep "universal-sierra-compiler ${{ steps.version.outputs.LATEST_VERSION }}"
+
+      - name: "Setup with `universal-sierra-compiler-version: 2.0.0`"
+        uses: ./
+        with:
+          universal-sierra-compiler-version: 2.0.0
+      - run: universal-sierra-compiler -V | grep "universal-sierra-compiler "
+
+      - name: "Setup with `universal-sierra-compiler-version: latest`"
+        uses: ./
+        with:
+          universal-sierra-compiler-version: latest
+      - run: universal-sierra-compiler -V | grep "universal-sierra-compiler ${{ steps.version.outputs.LATEST_VERSION }}"
+
+      - name: "Create .tool-versions file"
+        run: echo "universal-sierra-compiler 1.0.0" >> .tool-versions
+      - name: "Setup using `.tool-versions` file"
+        uses: ./
+      - run: universal-sierra-compiler -V | grep "universal-sierra-compiler 1.0.0"
+
+      - name: "Create .tool-versions file in subfolder"
+        run: mkdir ./tmp && echo "universal-sierra-compiler 2.0.0-rc.0" >> ./tmp/.tool-versions
+      - name: "Setup using `.tool-versions` file in subfolder"
+        uses: ./
+        with:
+          tool-versions: ./tmp/.tool-versions
+      - run: universal-sierra-compiler -V | grep "universal-sierra-compiler 2.0.0-rc.0"
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "npm"
+      - run: npm ci
+      - run: npm run lint
