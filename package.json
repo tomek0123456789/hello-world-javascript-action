@@ -14,20 +14,20 @@
     "type": "git",
     "url": "git+https://github.com/tomek0123456789/hello-world-javascript-action.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Software Mansion <contact@swmansion.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tomek0123456789/hello-world-javascript-action/issues"
   },
   "homepage": "https://github.com/tomek0123456789/hello-world-javascript-action#readme",
-  "devDependencies": {
-    "@vercel/ncc": "^0.36.1",
-    "prettier": "3.0.0"
-  },
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^6.0.0",
     "@actions/tool-cache": "^2.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.36.1",
+    "prettier": "3.0.0"
   }
 }
