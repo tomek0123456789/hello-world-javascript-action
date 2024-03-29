@@ -30734,7 +30734,6 @@ async function findUSCDir(extractedPath) {
 
 async function main() {
   try {
-    core.info("siemaaaaaaaaaaaaaaaa");
     const uscVersionInput = core.getInput("universal-sierra-compiler-version");
     const toolVersionsPathInput = core.getInput("tool-versions");
 
@@ -30749,8 +30748,6 @@ async function main() {
     await core.group(
       `Setting up universal-sierra-compiler ${versionWithPrefix(uscVersion)}`,
       async () => {
-        core.info("siemaaaaaaaaaaaaaaaa");
-
         let uscPrefix = tool_cache.find(
           "universal-sierra-compiler",
           uscVersion,
@@ -30775,10 +30772,8 @@ async function main() {
       "universal-sierra-compiler-version",
       await getFullVersionFromUSC(),
     );
-    core.info("siemaaaaaaaaaaaaaaaa");
   } catch (err) {
     core.setFailed(err);
-    core.info("not cool >:(");
   }
 }
 
