@@ -64,7 +64,7 @@ jobs:
         id: setup-universal-sierra-compiler
         uses: ./
 
-      - run: ls -la ${{ steps.setup-universal-sierra-compiler.outputs.universal-sierra-compiler-prefix }}/bin
+      - run: ls ${{ steps.setup-universal-sierra-compiler.outputs.universal-sierra-compiler-prefix }}/bin
 
   lint:
     runs-on: ubuntu-latest
