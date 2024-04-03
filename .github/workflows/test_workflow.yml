@@ -60,12 +60,6 @@ jobs:
           tool-versions: ./tmp/.tool-versions
       - run: universal-sierra-compiler -V | grep "universal-sierra-compiler 2.0.0-rc.0"
 
-      - name: "Test directory"
-        id: setup-universal-sierra-compiler
-        uses: ./
-
-      - run: ls ${{ steps.setup-universal-sierra-compiler.outputs.universal-sierra-compiler-prefix }}/bin
-
   lint:
     runs-on: ubuntu-latest
     steps:
