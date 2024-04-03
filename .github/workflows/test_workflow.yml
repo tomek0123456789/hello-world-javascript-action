@@ -61,10 +61,10 @@ jobs:
       - run: universal-sierra-compiler -V | grep "universal-sierra-compiler 2.0.0-rc.0"
 
       - name: "Test directory"
-        id: setup-starknet-foundry
+        id: setup-universal-sierra-compiler
         uses: ./
 
-      - run: ls -la ${{ steps.setup-starknet-foundry.outputs.starknet-foundry-prefix }}/bin
+      - run: ls -la ${{ steps.setup-universal-sierra-compiler.outputs.universal-sierra-compiler-prefix }}/bin
 
   lint:
     runs-on: ubuntu-latest
