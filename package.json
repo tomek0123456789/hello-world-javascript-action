@@ -1,7 +1,7 @@
 {
   "name": "setup-universal-sierra-compiler",
   "version": "1.0.0",
-  "description": "",
+  "description": "Sets up universal-sierra-compiler in your Github Actions",
   "main": "index.js",
   "scripts": {
     "build": "ncc build index.js -o dist/setup --source-map --license licenses.txt",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomek0123456789/hello-world-javascript-action.git"
+    "url": "git+https://github.com/software-mansion/setup-universal-sierra-compiler.git"
   },
   "author": "Software Mansion <contact@swmansion.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tomek0123456789/hello-world-javascript-action/issues"
+    "url": "https://github.com/software-mansion/setup-universal-sierra-compiler"
   },
-  "homepage": "https://github.com/tomek0123456789/hello-world-javascript-action#readme",
+  "homepage": "https://github.com/software-mansion/setup-universal-sierra-compiler#readme",
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/exec": "^1.1.1",
